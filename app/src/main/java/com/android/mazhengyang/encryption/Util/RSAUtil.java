@@ -48,23 +48,23 @@ public class RSAUtil {
      * 比DES慢上倍，这是RSA最大的缺陷，因此通常只能用于加密少量数据或者加密密钥，但RSA仍然不失为一种高强度的算法。
      */
 
-    public static String ALGORITHM = "RSA";
+    private static String ALGORITHM = "RSA";
 
     /**
      * android系统的RSA实现是"RSA/None/NoPadding"，而标准JDK实现是"RSA/None/PKCS1Padding" ，这造成了在
      * android机上加密后无法在服务器上解密的原因，所以在实现的时候这里一定要注意保持相同
      */
-    public static final String TRANSFORMATION = "RSA/ECB/PKCS1Padding";//加密填充方式
+    private static final String TRANSFORMATION = "RSA/ECB/PKCS1Padding";//加密填充方式
 
     public static final int DEFAULT_KEY_SIZE = 2048;//秘钥默认长度
-    public static final byte[] DEFAULT_SPLIT = "#PART#".getBytes();// 当要加密的内容超过bufferSize，则采用partSplit进行分块加密
-    public static final int DEFAULT_BUFFERSIZE = (DEFAULT_KEY_SIZE / 8) - 11;// 当前秘钥支持加密的最大字节数
+    private static final byte[] DEFAULT_SPLIT = "#PART#".getBytes();// 当要加密的内容超过bufferSize，则采用partSplit进行分块加密
+    private static final int DEFAULT_BUFFERSIZE = (DEFAULT_KEY_SIZE / 8) - 11;// 当前秘钥支持加密的最大字节数
 
     /**
      * 随机生成RSA密钥对
      *
-     * @param keyLength 密钥长度，范围：512～2048
-     *                  一般1024
+     * @param keyLength 密钥长度，范围：512～2048，一般1024
+     *                  
      * @return
      */
     public static KeyPair generateRSAKeyPair(int keyLength) {

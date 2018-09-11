@@ -25,17 +25,16 @@ public class AESUtil {
     private static final String TAG = "Encryption.AESUtil";
 
     /**
-     * 高级加密标准（英语：Advanced Encryption Standard，缩写：AES）
-     * 概述：对称加密算法
+     * 概述：对称加密算法，高级加密标准（英语：Advanced Encryption Standard，缩写：AES）
      * 优点：算法公开、计算量小、加密速度快、加密效率高
      * 缺点：双方都使用同样密钥，安全性得不到保证
      */
 
-    public static String ALGORITHM = "AES";
+    private static String ALGORITHM = "AES";
 
-    public final static String TRANSFORMATION = "AES/CBC/PKCS5Padding"; //加密方式/工作模式/填充模式
+    private final static String TRANSFORMATION = "AES/CBC/PKCS5Padding"; //加密方式/工作模式/填充模式
 
-    public static byte[] iv;
+    private static byte[] iv;
 
     static {
         byte[] randByte = new byte[16]; //初始化向量参数，AES 为16bytes

@@ -33,14 +33,14 @@ public class DESUtil {
     /**
      * DES一共有电子密码本模式（ECB）、加密分组链接模式（CBC）、加密反馈模式（CFB）和输出反馈模式（OFB）四种模式
      * <p>
-     * PKCS5Padding是填充模式，还有其它的填充模式：
+     * PKCS5Padding是填充模式，还有其它的填充模式，如PKCS7Padding等
      */
 
-    public static String ALGORITHM = "DES";
+    private static String ALGORITHM = "DES";
 
-    public final static String TRANSFORMATION = "DES/CBC/PKCS5Padding"; //加密方式/工作模式/填充模式
+    private final static String TRANSFORMATION = "DES/CBC/PKCS5Padding"; //加密方式/工作模式/填充模式
 
-    public static byte[] iv;
+    private static byte[] iv;
 
     static {
         byte[] randByte = new byte[8]; //初始化向量参数，AES 为16bytes
@@ -49,6 +49,14 @@ public class DESUtil {
         iv = randByte;
         Log.d(TAG, "static initializer: randByte toHexString = " + Conversion.toHexString(randByte));
     }
+
+    /**
+     * KeyGenerator和 SecretKeyFactory，都是javax.crypto的包，
+     * 生成的key主要是提供给AES，DES，3DES，MD5，SHA1等对称和单向加密算法。
+     *
+     *KeyPairGenerator和 KeyFactory，都是java.security的包，生成的key主要是提供给DSA，RSA，EC等非对称加密算法
+     */
+
 
     /**
      * KeyGenerator:密钥生成器
