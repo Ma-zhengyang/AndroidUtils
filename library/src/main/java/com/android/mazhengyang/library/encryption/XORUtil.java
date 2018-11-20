@@ -1,7 +1,7 @@
-package com.android.mazhengyang.encryption.Util;
+package com.android.mazhengyang.library.encryption;
 
 /**
- * Created by mazhengyang on 18-9-11.
+ * Created by mazhengyang on 18-9-7.
  */
 
 public class XORUtil {

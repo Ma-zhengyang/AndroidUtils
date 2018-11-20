@@ -1,17 +1,15 @@
-package com.android.mazhengyang.encryption;
+package com.android.mazhengyang.library;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.android.mazhengyang.encryption.Util.AESUtil;
-import com.android.mazhengyang.encryption.Util.Base64Util;
-import com.android.mazhengyang.encryption.Util.Conversion;
-import com.android.mazhengyang.encryption.Util.DESUtil;
-import com.android.mazhengyang.encryption.Util.MD5Util;
-import com.android.mazhengyang.encryption.Util.RSAUtil;
-import com.android.mazhengyang.encryption.Util.SHAUtil;
-import com.android.mazhengyang.encryption.Util.XORUtil;
+import com.android.mazhengyang.library.encryption.AESUtil;
+import com.android.mazhengyang.library.encryption.Base64Util;
+import com.android.mazhengyang.library.encryption.Conversion;
+import com.android.mazhengyang.library.encryption.DESUtil;
+import com.android.mazhengyang.library.encryption.MD5Util;
+import com.android.mazhengyang.library.encryption.RSAUtil;
+import com.android.mazhengyang.library.encryption.SHAUtil;
+import com.android.mazhengyang.library.encryption.XORUtil;
 
 import java.security.KeyPair;
 import java.security.Provider;
@@ -19,7 +17,11 @@ import java.security.Security;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by mazhengyang on 18-11-20.
+ */
+
+public class EncryptUtils {
 
     /**
      * 1、单向加密：不可逆，例如 MD5，SHA，HMAC
@@ -28,14 +30,12 @@ public class MainActivity extends AppCompatActivity {
      * 使用公钥加密的内容需要用私钥来解密，DSA，RSA...
      */
 
-    private static final String TAG = "Encryption.MainActivity";
+    private static final String TAG = EncryptUtils.class.getSimpleName();
 
-    private String plainText = "加密解密";
+    private String plainText = "";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public EncryptUtils(String plainText) {
+        this.plainText = plainText;
 
         Provider[] providers = Security.getProviders();
         for (Provider p : providers) {
@@ -45,18 +45,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "----------------------------");
         }
 
-        Log.d(TAG, "onCreate: plainText=" + plainText);
-
-//        byDES();
-//        byAES();
-//        byRSA();
-//        byXOR();
-//        byBase64();
-//        byMD5();
-//        bySHA();
     }
 
-    private void byDES() {
+    public void byDES() {
 
         byte[] key = DESUtil.generateKey();
         byte[] cipherBytes = DESUtil.encrypt(plainText.getBytes(), key);
@@ -68,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void byAES() {
+    public void byAES() {
 
         byte[] key = AESUtil.generateKey();
         byte[] cipherBytes = AESUtil.encrypt(plainText.getBytes(), key);
@@ -80,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void byRSA() {
+    public void byRSA() {
         KeyPair keyPair = RSAUtil.generateRSAKeyPair(RSAUtil.DEFAULT_KEY_SIZE);
         // 公钥
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
@@ -109,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
 
-    private void byXOR() {
+    public void byXOR() {
         byte[] cipherBytes = XORUtil.encrypt(plainText.getBytes());//加密
         Log.d(TAG, "byXOR: " + Conversion.toHexString(cipherBytes));
 
@@ -118,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "byXOR: clearBytes = " + clearBytes);
     }
 
-    private void byBase64() {
+    public void byBase64() {
 
         String cipherString = Base64Util.encrypt(plainText);
         Log.d(TAG, "byBase64: cipherString=" + cipherString);
@@ -127,13 +118,13 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "byBase64: clearText=" + clearText);
     }
 
-    private void byMD5() {
+    public void byMD5() {
 
         String result = MD5Util.encryptString(plainText);
         Log.d(TAG, "byMD5: result=" + result);
     }
 
-    private void bySHA() {
+    public void bySHA() {
 
         String cipherString = SHAUtil.encryptString(plainText);
         Log.d(TAG, "bySHA: cipherString=" + cipherString);

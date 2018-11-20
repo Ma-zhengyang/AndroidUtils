@@ -1,13 +1,11 @@
-package com.android.mazhengyang.encryption.Util;
-
-import android.os.Message;
+package com.android.mazhengyang.library.encryption;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by mazhengyang on 18-9-11.
+ * Created by mazhengyang on 18-9-7.
  */
 
 public class SHAUtil {

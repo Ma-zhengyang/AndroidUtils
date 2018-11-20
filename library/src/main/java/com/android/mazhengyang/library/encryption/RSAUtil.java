@@ -1,4 +1,4 @@
-package com.android.mazhengyang.encryption.Util;
+package com.android.mazhengyang.library.encryption;
 
 import android.util.Log;
 
@@ -63,8 +63,8 @@ public class RSAUtil {
     /**
      * 随机生成RSA密钥对
      *
-     * @param keyLength 密钥长度，范围：512～2048，一般1024
-     *                  
+     * @param keyLength 密钥长度，范围：512～2048
+     *                  一般1024
      * @return
      */
     public static KeyPair generateRSAKeyPair(int keyLength) {

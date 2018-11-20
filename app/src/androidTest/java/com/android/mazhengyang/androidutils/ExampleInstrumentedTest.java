@@ -1,4 +1,4 @@
-package com.android.mazhengyang.encryption;
+package com.android.mazhengyang.androidutils;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.android.mazhengyang.encryption", appContext.getPackageName());
+        assertEquals("com.android.mazhengyang.androidutils", appContext.getPackageName());
     }
 }

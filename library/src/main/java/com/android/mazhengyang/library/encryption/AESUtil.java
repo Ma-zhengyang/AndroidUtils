@@ -1,4 +1,4 @@
-package com.android.mazhengyang.encryption.Util;
+package com.android.mazhengyang.library.encryption;
 
 import android.util.Log;
 

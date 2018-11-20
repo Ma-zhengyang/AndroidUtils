@@ -1,4 +1,4 @@
-package com.android.mazhengyang.encryption.Util;
+package com.android.mazhengyang.library.encryption;
 
 import android.text.TextUtils;
 
@@ -9,7 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by mazhengyang on 18-9-8.
+ * Created by mazhengyang on 18-9-7.
  */
 
 public class MD5Util {

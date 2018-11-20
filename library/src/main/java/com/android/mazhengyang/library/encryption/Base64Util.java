@@ -1,10 +1,10 @@
-package com.android.mazhengyang.encryption.Util;
+package com.android.mazhengyang.library.encryption;
 
 import android.util.Base64;
 import android.util.Log;
 
 /**
- * Created by mazhengyang on 18-9-8.
+ * Created by mazhengyang on 18-9-7.
  */
 
 public class Base64Util {

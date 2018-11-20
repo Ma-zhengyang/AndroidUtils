@@ -1,4 +1,4 @@
-package com.android.mazhengyang.encryption;
+package com.android.mazhengyang.androidutils;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.android.mazhengyang.encryption.Util;
+package com.android.mazhengyang.library.encryption;
 
 import android.util.Log;
 
@@ -68,7 +68,7 @@ public class DESUtil {
      * init(AlgorithmParameterSpec params);通过指定参数集来初始化
      * init(AlgorithmParameterSpec params,SecureRandom sRandoom);通过指定参数集和随机数源的方式生成
      * init(int arg0, SecureRandom arg1);通过指定大小和随机源的方式产生
-     * generatorKey();生成秘钥 // 返回SecertKey对象
+     * generatorKey();生成秘钥
      *
      * @return
      */
