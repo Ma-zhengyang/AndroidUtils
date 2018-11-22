@@ -6,8 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.android.mazhengyang.library.AppUtils;
+import com.android.mazhengyang.library.ByteUtils;
+import com.android.mazhengyang.library.DisplayUtils;
 import com.android.mazhengyang.library.EncryptUtils;
+import com.android.mazhengyang.library.FileUtils;
 import com.android.mazhengyang.library.RandomUtils;
+import com.android.mazhengyang.library.StringUtils;
+
+import java.io.UnsupportedEncodingException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
 //        testEncrypt();
 //        testApp();
-        testRandom();
+//        testRandom();
+//        testString();
+//        testDisplay();
+//        testFile();
+        testByte();
     }
 
     private void testEncrypt() {
@@ -81,6 +91,43 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < buf.length; i++) {
             Log.d(TAG, "testRandom: RandomUtils.randomBytes(byte[] buf)=" + buf[i]);
         }
+    }
+
+    private void testString() {
+
+        Log.d(TAG, "testString: " + StringUtils.isChinese("我的wo"));
+        Log.d(TAG, "testString: " + StringUtils.isChinese("wo"));
+        Log.d(TAG, "testString: " + StringUtils.getStringByteCount("我的wo"));
+    }
+
+    private void testDisplay() {
+
+        Log.d(TAG, "testDisplay: getScreenWidth=" + DisplayUtils.getScreenWidth(this));
+        Log.d(TAG, "testDisplay: getScreenHeight=" + DisplayUtils.getScreenHeight(this));
+        Log.d(TAG, "testDisplay: getScreenDensity=" + DisplayUtils.getScreenDensity(this));
+        Log.d(TAG, "testDisplay: getScreenDensityDPI=" + DisplayUtils.getScreenDensityDPI(this));
+        Log.d(TAG, "testDisplay: getStatusBarHeight=" + DisplayUtils.getStatusBarHeight(this));
+    }
+
+    private void testFile() {
+
+        Log.d(TAG, "testFile: testFile=" + FileUtils.formatFileSize(100000));
+    }
+
+    private void testByte() {
+
+        byte[] b = new byte[0];
+        try {
+            b = "abc".getBytes("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < b.length; i++) {
+            Log.d(TAG, "testFile: testByte=" + b[i]);
+        }
+        Log.d(TAG, "testByte: bytes2HexStr " + ByteUtils.bytes2HexStr(b));
+
+        Log.d(TAG, "testByte: " + new String(b));
     }
 
 }
